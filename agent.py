@@ -7,7 +7,7 @@ sensible. Ce fichier est fourni tel quel : vous n'avez pas à le modifier.
 import asyncio
 import os
 import sys
-from turtle import st
+from streamlit import st
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
