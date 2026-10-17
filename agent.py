@@ -7,7 +7,7 @@ sensible. Ce fichier est fourni tel quel : vous n'avez pas à le modifier.
 import asyncio
 import os
 import sys
-
+from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
@@ -34,12 +34,16 @@ SYSTEM_PROMPT = (
 # fabrique un depuis une liste blanche (PATH, HOME, USER…) d'où toute clé d'API
 # est absente. Et dès qu'on renseigne « env », ce dictionnaire REMPLACE cette
 # liste blanche : ce qui n'y figure pas n'existe pas pour le serveur.
+load_dotenv()
 MCP_SERVERS = {
     SERVER: {
         "command": sys.executable,
         "args": ["randoneo_support.py"],
         "transport": "stdio",
         "env": {"OPENAI_API_KEY": os.environ["OPENAI_API_KEY"]},
+        "TICKET_API_TOKEN": os.environ["TICKET_API_TOKEN"],
+        "ANTHROPIC_MODEL": os.environ["ANTHROPIC_MODEL"],
+        "RANDONEO_MAX_ITERATIONS": os.environ["RANDONEO_MAX_ITERATIONS"],
         # Un serveur qui appelle une API tierce ajouterait sa clé ici, par ex. :
         # "OPENAI_API_KEY": os.environ["OPENAI_API_KEY"],
     }
