@@ -7,7 +7,6 @@ sensible. Ce fichier est fourni tel quel : vous n'avez pas à le modifier.
 import asyncio
 import os
 import sys
-from streamlit import st
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
@@ -41,10 +40,7 @@ MCP_SERVERS = {
         "command": sys.executable,
         "args": ["randoneo_support.py"],
         "transport": "stdio",
-        "env": {"OPENAI_API_KEY": st.secrets["OPENAI_API_KEY"]["OPENAI_API_KEY"]},
-        "TICKET_API_TOKEN": st.secrets["TICKET_API_TOKEN"],
-        "ANTHROPIC_MODEL": st.secrets["ANTHROPIC_MODEL"],
-        "RANDONEO_MAX_ITERATIONS": st.secrets["RANDONEO_MAX_ITERATIONS"],
+        "env": {"OPENAI_API_KEY": os.environ["OPENAI_API_KEY"]},
         # Un serveur qui appelle une API tierce ajouterait sa clé ici, par ex. :
         # "OPENAI_API_KEY": os.environ["OPENAI_API_KEY"],
     }
