@@ -40,7 +40,10 @@ MCP_SERVERS = {
         "command": sys.executable,
         "args": ["randoneo_support.py"],
         "transport": "stdio",
-        "env": {"ANTHROPIC_API_KEY": os.environ["ANTHROPIC_API_KEY"]},
+        "env": {"ANTHROPIC_API_KEY": os.environ["ANTHROPIC_API_KEY"],
+                "ANTHROPIC_MODEL": os.environ["ANTHROPIC_MODEL"],
+                "OPENAI_API_KEY": os.environ["OPENAI_API_KEY"],
+                },
         # Un serveur qui appelle une API tierce ajouterait sa clé ici, par ex. :
         # "OPENAI_API_KEY": os.environ["OPENAI_API_KEY"],
     }
